@@ -10,6 +10,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "5.15.3",
     "@popperjs/core": "2.9.1",
+    "aos": "^2.3.4",
     "core-js": "3.9.1",
     "vue": "3.0.7",
     "webpack": "^5.94.0"

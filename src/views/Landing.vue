@@ -21,10 +21,17 @@
           <div class="items-center flex flex-wrap">
             <div class="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
               <div class="pr-12">
-                <h1 class="text-white font-semibold text-5xl">
+                <h1
+                  class="text-white font-semibold text-5xl"
+                  data-aos="fade-up"
+                >
                   Your story starts with us.
                 </h1>
-                <p class="mt-4 text-lg text-gray-300">
+                <p
+                  class="mt-4 text-lg text-gray-300"
+                  data-aos="fade-right"
+                  data-aos-delay="1000"
+                >
                   This is a simple example of a Landing Page you can build using
                   Tailwind Starter Kit. It features multiple CSS components
                   based on the Tailwindcss design system.
@@ -56,7 +63,11 @@
       <section class="pb-20 bg-gray-300 -mt-24">
         <div class="container mx-auto px-4">
           <div class="flex flex-wrap">
-            <div class="lg:pt-12 pt-6 w-full md:w-4/12 px-4 text-center">
+            <div
+              class="lg:pt-12 pt-6 w-full md:w-4/12 px-4 text-center"
+              data-aos="fade-right"
+              data-aos-delay="1200"
+            >
               <div
                 class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg"
               >
@@ -73,7 +84,11 @@
                 </div>
               </div>
             </div>
-            <div class="w-full md:w-4/12 px-4 text-center">
+            <div
+              class="w-full md:w-4/12 px-4 text-center"
+              data-aos="fade-right"
+              data-aos-delay="1400"
+            >
               <div
                 class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg"
               >
@@ -91,7 +106,11 @@
                 </div>
               </div>
             </div>
-            <div class="pt-6 w-full md:w-4/12 px-4 text-center">
+            <div
+              class="pt-6 w-full md:w-4/12 px-4 text-center"
+              data-aos="fade-right"
+              data-aos-delay="1600"
+            >
               <div
                 class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg"
               >
@@ -111,7 +130,10 @@
             </div>
           </div>
           <div class="flex flex-wrap items-center mt-32">
-            <div class="w-full md:w-5/12 px-4 mr-auto ml-auto">
+            <div
+              class="w-full md:w-5/12 px-4 mr-auto ml-auto"
+              data-aos="zoom-in-right"
+            >
               <div
                 class="text-gray-600 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-gray-100"
               >
@@ -140,7 +162,11 @@
                 >Check Tailwind Starter Kit!</a
               >
             </div>
-            <div class="w-full md:w-4/12 px-4 mr-auto ml-auto">
+            <div
+              class="w-full md:w-4/12 px-4 mr-auto ml-auto"
+              data-aos="flip-left"
+              data-aos-delay="1000"
+            >
               <div
                 class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-pink-600"
               >
@@ -196,7 +222,11 @@
             ></polygon>
           </svg>
         </div>
-        <div class="container mx-auto px-4">
+        <div
+          class="container mx-auto px-4"
+          data-aos="flip-right"
+          data-aos-delay="1000"
+        >
           <div class="items-center flex flex-wrap">
             <div class="w-full md:w-4/12 ml-auto mr-auto px-4">
               <img
@@ -205,7 +235,10 @@
                 src="https://images.unsplash.com/photo-1555212697-194d092e3b8f?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=634&amp;q=80"
               />
             </div>
-            <div class="w-full md:w-5/12 ml-auto mr-auto px-4">
+            <div
+              class="w-full md:w-5/12 ml-auto mr-auto px-4"
+              data-aos="zoom-in-left"
+            >
               <div class="md:pr-12">
                 <div
                   class="text-pink-600 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-pink-300"
@@ -266,7 +299,209 @@
           </div>
         </div>
       </section>
-      <section id="contato-localizacao" class="pt-20 pb-48">
+      <section class="pt-20 pb-48">
+        <!-- Section Container -->
+        <div class="container mx-auto px-4">
+          <!-- Text Box -->
+          <div class="flex flex-wrap justify-center text-center mb-24">
+            <div class="w-full lg:w-6/12 px-4">
+              <h2 class="text-4xl font-semibold">Aqui está o nosso time!</h2>
+              <p class="text-lg leading-relaxed m-4 text-gray-600">
+                According to the National Oceanic and Atmospheric
+                Administration, Ted, Scambos, NSIDClead scentist, puts the
+                potentially record maximum.
+              </p>
+            </div>
+          </div>
+          <!-- Flex Row Container -->
+          <div class="flex flex-wrap">
+            <!-- Item -->
+            <div
+              class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4"
+              data-aos="fade-in"
+            >
+              <div class="px-6">
+                <!-- Image -->
+                <img
+                  alt="..."
+                  src="https://randomuser.me/api/portraits/men/25.jpg"
+                  class="shadow-lg rounded-full max-w-full mx-auto"
+                  style="max-width: 120px"
+                />
+                <div class="pt-6 text-center">
+                  <h5 class="text-xl font-bold">Ryan Thompson</h5>
+                  <p class="mt-1 text-sm text-gray-500 uppercase font-semibold">
+                    Web Developer
+                  </p>
+                  <!-- Social Media Buttons -->
+                  <div class="mt-6">
+                    <button
+                      class="bg-blue-400 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                      type="button"
+                    >
+                      <!-- Icon -->
+                      <i class="fab fa-twitter"></i>
+                    </button>
+                    <button
+                      class="bg-blue-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                      type="button"
+                    >
+                      <!-- Icon -->
+                      <i class="fab fa-facebook-f"></i>
+                    </button>
+                    <button
+                      class="bg-pink-500 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                      type="button"
+                    >
+                      <!-- Icon -->
+                      <i class="fab fa-dribbble"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Item -->
+            <div
+              class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4"
+              data-aos="fade-in"
+              data-aos-delay="400"
+            >
+              <div class="px-6">
+                <!-- Image -->
+                <img
+                  alt="..."
+                  src="https://randomuser.me/api/portraits/women/19.jpg"
+                  class="shadow-lg rounded-full max-w-full mx-auto"
+                  style="max-width: 120px"
+                />
+                <div class="pt-6 text-center">
+                  <h5 class="text-xl font-bold">Romina Hadid</h5>
+                  <p class="mt-1 text-sm text-gray-500 uppercase font-semibold">
+                    Marketing Specialist
+                  </p>
+                  <!-- Social Media Buttons -->
+                  <div class="mt-6">
+                    <button
+                      class="bg-red-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                      type="button"
+                    >
+                      <!-- Icon -->
+                      <i class="fab fa-google"></i>
+                    </button>
+                    <button
+                      class="bg-blue-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                      type="button"
+                    >
+                      <!-- Icon -->
+                      <i class="fab fa-facebook-f"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Item -->
+            <div
+              class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4"
+              data-aos="fade-in"
+              data-aos-delay="600"
+            >
+              <div class="px-6">
+                <!-- Image -->
+                <img
+                  alt="..."
+                  src="https://randomuser.me/api/portraits/women/63.jpg"
+                  class="shadow-lg rounded-full max-w-full mx-auto"
+                  style="max-width: 120px"
+                />
+                <div class="pt-6 text-center">
+                  <h5 class="text-xl font-bold">Alexa Smith</h5>
+                  <p class="mt-1 text-sm text-gray-500 uppercase font-semibold">
+                    UI/UX Designer
+                  </p>
+                  <!-- Social Media Buttons -->
+                  <div class="mt-6">
+                    <button
+                      class="bg-red-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                      type="button"
+                    >
+                      <!-- Icon -->
+                      <i class="fab fa-google"></i>
+                    </button>
+                    <button
+                      class="bg-blue-400 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                      type="button"
+                    >
+                      <!-- Icon -->
+                      <i class="fab fa-twitter"></i>
+                    </button>
+                    <button
+                      class="bg-gray-800 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                      type="button"
+                    >
+                      <!-- Icon -->
+                      <i class="fab fa-instagram"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Item -->
+            <div
+              class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4"
+              data-aos="fade-in"
+              data-aos-delay="800"
+            >
+              <div class="px-6">
+                <!-- Image -->
+                <img
+                  alt="..."
+                  src="https://randomuser.me/api/portraits/women/67.jpg"
+                  class="shadow-lg rounded-full max-w-full mx-auto"
+                  style="max-width: 120px"
+                />
+                <div class="pt-6 text-center">
+                  <h5 class="text-xl font-bold">Jenna Kardi</h5>
+                  <p class="mt-1 text-sm text-gray-500 uppercase font-semibold">
+                    Founder and CEO
+                  </p>
+                  <!-- Social Media Buttons -->
+                  <div class="mt-6">
+                    <button
+                      class="bg-pink-500 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                      type="button"
+                    >
+                      <!-- Icon -->
+                      <i class="fab fa-dribbble"></i>
+                    </button>
+                    <button
+                      class="bg-red-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                      type="button"
+                    >
+                      <!-- Icon -->
+                      <i class="fab fa-google"></i>
+                    </button>
+                    <button
+                      class="bg-blue-400 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                      type="button"
+                    >
+                      <!-- Icon -->
+                      <i class="fab fa-twitter"></i>
+                    </button>
+                    <button
+                      class="bg-gray-800 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                      type="button"
+                    >
+                      <!-- Icon -->
+                      <i class="fab fa-instagram"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="contato-localizacao" class="pt-5 pb-48">
         <div class="flex flex-wrap items-center mt-32">
           <div class="w-full md:w-5/12 px-4 mr-auto ml-auto">
             <h3 class="text-3xl mb-2 font-semibold leading-normal">
@@ -363,7 +598,11 @@
               </p>
             </div>
           </div>
-          <div class="flex flex-wrap mt-12 justify-center">
+          <div
+            class="flex flex-wrap mt-12 justify-center"
+            data-aos="fade-in"
+            data-aos-delay="400"
+          >
             <div class="w-full lg:w-3/12 px-4 text-center">
               <div
                 class="text-gray-900 p-3 w-12 h-12 shadow-lg rounded-full bg-white inline-flex items-center justify-center"
@@ -414,58 +653,81 @@
               <div
                 class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-gray-300"
               >
-              <!-- Arrumar o formulário para disparar email-->
-                <div class="flex-auto p-5 lg:p-10">
+                <!-- Arrumar o formulário para disparar email-->
+                <form
+                  action="https://getform.io/f/ajjexqma"
+                  method="POST"
+                  class="flex-auto p-5 lg:p-10"
+                >
                   <h4 class="text-2xl font-semibold">Solicite Orçamento</h4>
                   <p class="leading-relaxed mt-1 mb-4 text-gray-600">
                     Complete o formulário e entraremos em contato.
                   </p>
+
                   <div class="relative w-full mb-3 mt-8">
                     <label
                       class="block uppercase text-gray-700 text-xs font-bold mb-2"
                       for="full-name"
                       >Nome Completo</label
-                    ><input
+                    >
+                    <input
                       type="text"
+                      name="name"
                       class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
                       placeholder="Nome Completo"
+                      required
                       style="transition: all 0.15s ease 0s"
                     />
                   </div>
+
                   <div class="relative w-full mb-3">
                     <label
                       class="block uppercase text-gray-700 text-xs font-bold mb-2"
                       for="email"
                       >Email</label
-                    ><input
+                    >
+                    <input
                       type="email"
+                      name="email"
                       class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
                       placeholder="Email"
+                      required
                       style="transition: all 0.15s ease 0s"
                     />
                   </div>
+
                   <div class="relative w-full mb-3">
                     <label
                       class="block uppercase text-gray-700 text-xs font-bold mb-2"
                       for="message"
                       >Mensagem</label
-                    ><textarea
+                    >
+                    <textarea
                       rows="4"
                       cols="80"
+                      name="message"
                       class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
                       placeholder="Descreva qual mobiliário você possui interesse..."
+                      required
                     ></textarea>
                   </div>
+
+                  <!-- Honeypot to prevent spam -->
+                  <input
+                    type="hidden"
+                    name="_gotcha"
+                    style="display: none !important"
+                  />
                   <div class="text-center mt-6">
                     <button
+                      type="submit"
                       class="bg-gray-900 text-white active:bg-gray-700 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
-                      type="button"
                       style="transition: all 0.15s ease 0s"
                     >
                       Enviar Mensagem
                     </button>
                   </div>
-                </div>
+                </form>
               </div>
             </div>
           </div>
@@ -478,11 +740,12 @@
 <script>
 import NavbarComponent from "../components/Navbar.vue";
 import FooterComponent from "../components/Footer.vue";
+
 export default {
   name: "landing-page",
   components: {
     NavbarComponent,
-    FooterComponent
-  }
-}
+    FooterComponent,
+  },
+};
 </script>
