@@ -11,13 +11,15 @@
         <div class="flex flex-wrap justify-center items-center">
           <div class="w-6/12 sm:w-4/12 px-4">
             <img
+            style="width: 60%;"
               src="../../public/logo_wca.png"
               alt="..."
               class="shadow rounded-full max-w-full h-auto align-middle border-none"
             />
           </div>
+          
           <a
-            class="text-md font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white"
+            class="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white"
             href="/"
             >WCA Office - Mobiliario Corporativo</a
           >
@@ -63,6 +65,16 @@
                 class="lg:text-gray-300 text-gray-500 fab fa-instagram text-lg leading-lg"
               ></i
               ><span class="lg:hidden inline-block ml-2">Instagram</span></a
+            >
+          </li>
+          <li class="flex items-center">
+            <a
+              class="lg:text-white lg:hover:text-gray-300 text-gray-800 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+              href="https://www.linkedin.com/company/wca-office/"
+              ><i
+                class="lg:text-gray-300 text-gray-500 fab fa-linkedin text-lg leading-lg"
+              ></i
+              ><span class="lg:hidden inline-block ml-2">Linkedin</span></a
             >
           </li>
         </ul>
