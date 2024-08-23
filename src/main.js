@@ -3,7 +3,7 @@ import { createWebHistory, createRouter } from "vue-router";
 
 // views
 
-import Profile from './views/Profile.vue'
+import Landing from './views/Landing.vue'
 
 // styles
 
@@ -17,10 +17,10 @@ import App from "@/App.vue";
 
 const routes = [
   {
-    path: "/profile",
-    component: Profile,
+    path: "/landing",
+    component: Landing,
   },
-  { path: "/:pathMatch(.*)*", redirect: "/profile" },
+  { path: "/:pathMatch(.*)*", redirect: "/landing" },
 ];
 
 const router = createRouter({
