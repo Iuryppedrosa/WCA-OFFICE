@@ -2,25 +2,25 @@ import { createApp } from "vue";
 import { createWebHistory, createRouter } from "vue-router";
 
 // views
-
-import Landing from './views/Landing.vue'
+import Landing from "./views/Landing.vue";
 
 // styles
-
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
 // mouting point for the whole app
-
 import App from "@/App.vue";
 
 // routes
-
 const routes = [
   {
-    path: "/landing",
+    path: "/", 
+    name: "Landing",
     component: Landing,
   },
-  { path: "/:pathMatch(.*)*", redirect: "/landing" },
+  {
+    path: "/:pathMatch(.*)*",
+    redirect: "/", 
+  },
 ];
 
 const router = createRouter({
