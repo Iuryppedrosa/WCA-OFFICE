@@ -1,6 +1,7 @@
 import { createApp } from "vue";
 import { createWebHistory, createRouter } from "vue-router";
-export const eventBus = createApp({}); 
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 // views
 import Landing from "./views/Landing.vue";
@@ -8,19 +9,19 @@ import Landing from "./views/Landing.vue";
 // styles
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
-// mouting point for the whole app
+// mounting point for the whole app
 import App from "@/App.vue";
 
 // routes
 const routes = [
   {
-    path: "/", 
+    path: "/",
     name: "Landing",
     component: Landing,
   },
   {
     path: "/:pathMatch(.*)*",
-    redirect: "/", 
+    redirect: "/",
   },
 ];
 
@@ -29,4 +30,19 @@ const router = createRouter({
   routes,
 });
 
-createApp(App).use(router).mount("#app");
+const app = createApp(App);
+app.use(router);
+
+// Initialize AOS
+app.mixin({
+  mounted() {
+    AOS.init({
+      delay: 200,
+      duration: 1500,
+      once: false,
+      mirror: false,
+    });
+  },
+});
+
+app.mount("#app");
