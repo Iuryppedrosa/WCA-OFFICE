@@ -1,5 +1,6 @@
 import { createApp } from "vue";
 import { createWebHistory, createRouter } from "vue-router";
+export const eventBus = createApp({}); 
 
 // views
 import Landing from "./views/Landing.vue";
