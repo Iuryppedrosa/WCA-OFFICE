@@ -25,7 +25,7 @@
                   class="text-white font-semibold text-5xl"
                   data-aos="fade-up"
                 >
-                  Your story starts with us.
+                  Mobiliário corporativo você encontra aqui!
                 </h1>
                 <p
                   class="mt-4 text-lg text-gray-300"
@@ -63,72 +63,13 @@
       <section class="pb-20 bg-gray-300 -mt-24">
         <div class="container mx-auto px-4">
           <div class="flex flex-wrap">
-            <div
-              class="lg:pt-12 pt-6 w-full md:w-4/12 px-4 text-center"
-              data-aos="fade-right"
-              data-aos-delay="1200"
-            >
-              <div
-                class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg"
-              >
-                <div class="px-4 py-5 flex-auto">
-                  <div
-                    class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-red-400"
-                  >
-                    <i class="fas fa-award"></i>
-                  </div>
-                  <h6 class="text-xl font-semibold">Garantia</h6>
-                  <p class="mt-2 mb-4 text-gray-600">
-                    Oferecemos vários produtos com garantia.... explicar mais
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div
-              class="w-full md:w-4/12 px-4 text-center"
-              data-aos="fade-right"
-              data-aos-delay="1400"
-            >
-              <div
-                class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg"
-              >
-                <div class="px-4 py-5 flex-auto">
-                  <div
-                    class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-blue-400"
-                  >
-                    <i class="fas fa-retweet"></i>
-                  </div>
-                  <h6 class="text-xl font-semibold">Free Revisions</h6>
-                  <p class="mt-2 mb-4 text-gray-600">
-                    Keep you user engaged by providing meaningful information.
-                    Remember that by this time, the user is curious.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div
-              class="pt-6 w-full md:w-4/12 px-4 text-center"
-              data-aos="fade-right"
-              data-aos-delay="1600"
-            >
-              <div
-                class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg"
-              >
-                <div class="px-4 py-5 flex-auto">
-                  <div
-                    class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-green-400"
-                  >
-                    <i class="fas fa-fingerprint"></i>
-                  </div>
-                  <h6 class="text-xl font-semibold">Verified Company</h6>
-                  <p class="mt-2 mb-4 text-gray-600">
-                    Write a few lines about each one. A paragraph describing a
-                    feature will be enough. Keep you user engaged!
-                  </p>
-                </div>
-              </div>
-            </div>
+            <card-component
+              v-for="(card, index) in cards"
+              :key="index"
+              v-bind="card"
+            ></card-component>
           </div>
+          <!-- FIM DOS CARDS -->
           <div class="flex flex-wrap items-center mt-32">
             <div
               class="w-full md:w-5/12 px-4 mr-auto ml-auto"
@@ -315,189 +256,12 @@
           </div>
           <!-- Flex Row Container -->
           <div class="flex flex-wrap">
-            <!-- Item -->
-            <div
-              class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4"
-              data-aos="fade-in"
-            >
-              <div class="px-6">
-                <!-- Image -->
-                <img
-                  alt="..."
-                  src="https://randomuser.me/api/portraits/men/25.jpg"
-                  class="shadow-lg rounded-full max-w-full mx-auto"
-                  style="max-width: 120px"
-                />
-                <div class="pt-6 text-center">
-                  <h5 class="text-xl font-bold">Ryan Thompson</h5>
-                  <p class="mt-1 text-sm text-gray-500 uppercase font-semibold">
-                    Web Developer
-                  </p>
-                  <!-- Social Media Buttons -->
-                  <div class="mt-6">
-                    <button
-                      class="bg-blue-400 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                      type="button"
-                    >
-                      <!-- Icon -->
-                      <i class="fab fa-twitter"></i>
-                    </button>
-                    <button
-                      class="bg-blue-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                      type="button"
-                    >
-                      <!-- Icon -->
-                      <i class="fab fa-facebook-f"></i>
-                    </button>
-                    <button
-                      class="bg-pink-500 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                      type="button"
-                    >
-                      <!-- Icon -->
-                      <i class="fab fa-dribbble"></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- Item -->
-            <div
-              class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4"
-              data-aos="fade-in"
-              data-aos-delay="400"
-            >
-              <div class="px-6">
-                <!-- Image -->
-                <img
-                  alt="..."
-                  src="https://randomuser.me/api/portraits/women/19.jpg"
-                  class="shadow-lg rounded-full max-w-full mx-auto"
-                  style="max-width: 120px"
-                />
-                <div class="pt-6 text-center">
-                  <h5 class="text-xl font-bold">Romina Hadid</h5>
-                  <p class="mt-1 text-sm text-gray-500 uppercase font-semibold">
-                    Marketing Specialist
-                  </p>
-                  <!-- Social Media Buttons -->
-                  <div class="mt-6">
-                    <button
-                      class="bg-red-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                      type="button"
-                    >
-                      <!-- Icon -->
-                      <i class="fab fa-google"></i>
-                    </button>
-                    <button
-                      class="bg-blue-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                      type="button"
-                    >
-                      <!-- Icon -->
-                      <i class="fab fa-facebook-f"></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- Item -->
-            <div
-              class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4"
-              data-aos="fade-in"
-              data-aos-delay="600"
-            >
-              <div class="px-6">
-                <!-- Image -->
-                <img
-                  alt="..."
-                  src="https://randomuser.me/api/portraits/women/63.jpg"
-                  class="shadow-lg rounded-full max-w-full mx-auto"
-                  style="max-width: 120px"
-                />
-                <div class="pt-6 text-center">
-                  <h5 class="text-xl font-bold">Alexa Smith</h5>
-                  <p class="mt-1 text-sm text-gray-500 uppercase font-semibold">
-                    UI/UX Designer
-                  </p>
-                  <!-- Social Media Buttons -->
-                  <div class="mt-6">
-                    <button
-                      class="bg-red-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                      type="button"
-                    >
-                      <!-- Icon -->
-                      <i class="fab fa-google"></i>
-                    </button>
-                    <button
-                      class="bg-blue-400 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                      type="button"
-                    >
-                      <!-- Icon -->
-                      <i class="fab fa-twitter"></i>
-                    </button>
-                    <button
-                      class="bg-gray-800 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                      type="button"
-                    >
-                      <!-- Icon -->
-                      <i class="fab fa-instagram"></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- Item -->
-            <div
-              class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4"
-              data-aos="fade-in"
-              data-aos-delay="800"
-            >
-              <div class="px-6">
-                <!-- Image -->
-                <img
-                  alt="..."
-                  src="https://randomuser.me/api/portraits/women/67.jpg"
-                  class="shadow-lg rounded-full max-w-full mx-auto"
-                  style="max-width: 120px"
-                />
-                <div class="pt-6 text-center">
-                  <h5 class="text-xl font-bold">Jenna Kardi</h5>
-                  <p class="mt-1 text-sm text-gray-500 uppercase font-semibold">
-                    Founder and CEO
-                  </p>
-                  <!-- Social Media Buttons -->
-                  <div class="mt-6">
-                    <button
-                      class="bg-pink-500 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                      type="button"
-                    >
-                      <!-- Icon -->
-                      <i class="fab fa-dribbble"></i>
-                    </button>
-                    <button
-                      class="bg-red-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                      type="button"
-                    >
-                      <!-- Icon -->
-                      <i class="fab fa-google"></i>
-                    </button>
-                    <button
-                      class="bg-blue-400 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                      type="button"
-                    >
-                      <!-- Icon -->
-                      <i class="fab fa-twitter"></i>
-                    </button>
-                    <button
-                      class="bg-gray-800 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                      type="button"
-                    >
-                      <!-- Icon -->
-                      <i class="fab fa-instagram"></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <employee-card-component
+              v-for="(employee, index) in employees"
+              :key="index"
+              v-bind="employee"
+              :social-medias="employee.socialMedias"
+            ></employee-card-component>
           </div>
         </div>
       </section>
@@ -740,12 +504,101 @@
 <script>
 import NavbarComponent from "../components/Navbar.vue";
 import FooterComponent from "../components/Footer.vue";
+import CardComponent from "../components/CardComponent.vue";
+import EmployeeCardComponent from "../components/EmployeeCardComponent.vue";
 
 export default {
   name: "landing-page",
   components: {
     NavbarComponent,
     FooterComponent,
+    CardComponent,
+    EmployeeCardComponent,
+  },
+  data() {
+    return {
+      cards: [
+        {
+          mainCss: "lg:pt-12 pt-6 w-full md:w-4/12 px-4 text-center",
+          title: "Garantia",
+          description:
+            "Oferecemos vários produtos com garantia.... explicar mais",
+          delay: 1200,
+          colorCard: "bg-red-400",
+          iconType: "fas fa-award",
+        },
+        {
+          mainCss: "w-full md:w-4/12 px-4 text-center",
+          title: "Suporte ao Cliente",
+          description:
+            "Oferecemos suporte ao cliente 24 horas por dia, 7 dias por semana.",
+          delay: 1400,
+          colorCard: "bg-blue-400",
+          iconType: "fas fa-retweet",
+        },
+        {
+          mainCss: "pt-6 w-full md:w-4/12 px-4 text-center",
+          title: "Empresa de renome",
+          description:
+            "Estamos no mercado há mais de 10 anos, com mais de 1000 clientes satisfeitos.",
+          delay: 1600,
+          colorCard: "bg-green-400",
+          iconType: "fas fa-fingerprint",
+        },
+      ],
+      employees: [
+        {
+          name: "Giovanna Camilo Rezende",
+          role: "Comercial, Marketing e Estratégia",
+          image: require("@/assets/img/employees/Giovanna.jpg"),
+          socialMedias: [
+            {
+              type: "email",
+              icon: "fa-solid fa-envelope",
+              color: "bg-blue-400",
+              email: "giovanna.camilo1@gmail.com",
+            },
+            {
+              type: "instagram",
+              icon: "fab fa-instagram",
+              color: "bg-blue-600",
+              link: "https://www.instagram.com/giovanna_crezende/",
+            },
+            {
+              type: "linkedin",
+              icon: "fa-brands fa-linkedin",
+              color: "bg-pink-500",
+              link: "https://www.linkedin.com/in/giovanna-rezende-8162652b0/",
+            },
+          ],
+        },
+        {
+          name: "Marli Castro Rezende",
+          role: "CEO",
+          image: require("@/assets/img/employees/Marli (2).png"),
+          socialMedias: [
+            {
+              type: "email",
+              icon: "fa-solid fa-envelope",
+              color: "bg-blue-400",
+              email: "giovanna.camilo1@gmail.com",
+            },
+            {
+              type: "instagram",
+              icon: "fab fa-instagram",
+              color: "bg-blue-600",
+              link: "https://www.instagram.com/marliccr/",
+            },
+            {
+              type: "linkedin",
+              icon: "fa-brands fa-linkedin",
+              color: "bg-pink-500",
+              link: "https://www.linkedin.com/company/wca-office/posts/?feedView=all",
+            },
+          ],
+        },
+      ],
+    };
   },
 };
 </script>
