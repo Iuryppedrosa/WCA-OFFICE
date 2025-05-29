@@ -1,11 +1,7 @@
 <template>
-  <footer class="relative bg-gray-300 pt-8 pb-6">
-    <div
-      class="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
-      style="height: 80px"
-    >
+  <footer class="footer">
+    <div class="wave-divider">
       <svg
-        class="absolute bottom-0 overflow-hidden"
         xmlns="http://www.w3.org/2000/svg"
         preserveAspectRatio="none"
         version="1.1"
@@ -13,83 +9,78 @@
         x="0"
         y="0"
       >
-        <polygon
-          class="text-gray-300 fill-current"
-          points="2560 0 2560 100 0 100"
-        ></polygon>
+        <polygon points="2560 0 2560 100 0 100"></polygon>
       </svg>
     </div>
-    <div class="container mx-auto px-4">
-      <div class="flex flex-wrap">
-        <div class="w-full lg:w-6/12 px-4">
-          <h4 class="text-3xl font-semibold">
-            WCA Office - Mobiliário Corporativo
-          </h4>
-          <h5 class="text-lg mt-0 mb-2 text-gray-700">
+    <div class="container">
+      <div class="footer-content">
+        <div class="company-info">
+          <h4 class="company-title">WCA Office - Mobiliário Corporativo</h4>
+          <h5 class="company-subtitle">
             Find us on any of these platforms, we respond 1-2 business days.
           </h5>
-          <div class="mt-6">
+          <div class="social-buttons">
             <button
-              class="bg-white text-blue-600 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-3"
+              class="social-button"
               type="button"
+              aria-label="Visite nossa página no Facebook"
               @click="goToLink('facebook')"
             >
-              <i class="flex fab fa-facebook-square"></i></button
-            ><button
-              class="bg-white text-blue-600 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-3"
-              type="button"
-              @click="goToLink('instagram')"
-            >
-              <i class="flex fab fa-instagram"></i></button
-            ><button
-              class="bg-white text-blue-600 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-3"
-              type="button"
-              @click="goToLink('whatsapp')"
-            >
-              <i class="flex fab fa-whatsapp"></i>
+              <i class="fab fa-facebook-square"></i>
             </button>
             <button
-              class="bg-white text-blue-600 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-3"
+              class="social-button"
               type="button"
+              aria-label="Siga-nos no Instagram"
+              @click="goToLink('instagram')"
+            >
+              <i class="fab fa-instagram"></i>
+            </button>
+            <button
+              class="social-button"
+              type="button"
+              aria-label="Entre em contato via WhatsApp"
+              @click="goToLink('whatsapp')"
+            >
+              <i class="fab fa-whatsapp"></i>
+            </button>
+            <button
+              class="social-button"
+              type="button"
+              aria-label="Conecte-se conosco no LinkedIn"
               @click="goToLink('linkedin')"
             >
-              <i class="flex fab fa-linkedin"></i>
+              <i class="fab fa-linkedin"></i>
             </button>
           </div>
         </div>
-        <div class="w-full lg:w-6/12 px-4">
-          <div class="flex flex-wrap items-top mb-6">
-            <div class="w-full lg:w-4/12 px-4 ml-auto">
-              <span
-                class="block uppercase text-gray-600 text-sm font-semibold mb-2"
-                >Seções</span
-              >
-              <ul class="list-unstyled">
+        <div class="links-section">
+          <div class="links-wrapper">
+            <div class="links-column">
+              <span class="links-title">Seções</span>
+              <ul class="links-list">
                 <li>
                   <a
-                    class="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
+                    class="footer-link"
                     href="https://www.creative-tim.com/presentation"
-                    >About Us</a
                   >
+                    About Us
+                  </a>
                 </li>
                 <li>
-                  <a
-                    class="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
-                    @click="emitScrollEvent"
-                    >Localização / Contato</a
-                  >
+                  <a class="footer-link" @click="emitScrollEvent">
+                    Localização / Contato
+                  </a>
                 </li>
               </ul>
             </div>
           </div>
         </div>
       </div>
-      <hr class="my-6 border-gray-400" />
-      <div
-        class="flex flex-wrap items-center md:justify-between justify-center"
-      >
-        <div class="w-full md:w-4/12 px-4 mx-auto text-center">
-          <div class="text-sm text-gray-600 font-semibold py-1">
+      <hr class="divider" />
+      <div class="copyright">
+        <div class="copyright-content">
+          <div class="copyright-text">
             Copyright © {{ date }} Wca Office
             <p>Designed By FreeStyleCode.INC</p>
           </div>
@@ -98,6 +89,7 @@
     </div>
   </footer>
 </template>
+
 <script>
 export default {
   data() {
@@ -125,3 +117,175 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.footer {
+  position: relative;
+  background-color: #d1d5db;
+  padding: 2rem 0 1.5rem;
+}
+
+.wave-divider {
+  position: absolute;
+  bottom: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 80px;
+  pointer-events: none;
+  overflow: hidden;
+  margin-top: -5rem;
+
+  svg {
+    position: absolute;
+    bottom: 0;
+    overflow: hidden;
+
+    polygon {
+      fill: #d1d5db;
+    }
+  }
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.company-info {
+  width: 100%;
+  padding: 0 1rem;
+
+  @include responsive(lg) {
+    width: 50%;
+  }
+}
+
+.company-title {
+  font-size: $font-size-3xl;
+  font-weight: 600;
+  color: $text-primary;
+}
+
+.company-subtitle {
+  font-size: $font-size-lg;
+  margin: 0 0 0.5rem;
+  color: $text-secondary;
+}
+
+.social-buttons {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.social-button {
+  @include flex-center;
+  background-color: white;
+  color: #2563eb;
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 9999px;
+  box-shadow: $shadow-lg;
+  outline: none;
+  padding: 0.75rem;
+  transition: $transition-base;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-md;
+  }
+
+  i {
+    font-size: $font-size-lg;
+  }
+}
+
+.links-section {
+  width: 100%;
+  padding: 0 1rem;
+
+  @include responsive(lg) {
+    width: 50%;
+  }
+}
+
+.links-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.links-column {
+  width: 100%;
+  padding: 0 1rem;
+  margin-left: auto;
+
+  @include responsive(lg) {
+    width: 33.333333%;
+  }
+}
+
+.links-title {
+  display: block;
+  text-transform: uppercase;
+  color: $text-secondary;
+  font-size: $font-size-base * 0.875;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.links-list {
+  list-style: none;
+}
+
+.footer-link {
+  color: $text-secondary;
+  font-weight: 600;
+  font-size: $font-size-base * 0.875;
+  padding-bottom: 0.5rem;
+  display: block;
+  transition: $transition-base;
+  cursor: pointer;
+
+  &:hover {
+    color: $text-primary;
+  }
+}
+
+.divider {
+  margin: 1.5rem 0;
+  border-color: #9ca3af;
+}
+
+.copyright {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+
+  @include responsive(md) {
+    justify-content: space-between;
+  }
+}
+
+.copyright-content {
+  width: 100%;
+  padding: 0 1rem;
+  margin: 0 auto;
+  text-align: center;
+
+  @include responsive(md) {
+    width: 33.333333%;
+  }
+}
+
+.copyright-text {
+  font-size: $font-size-base * 0.875;
+  color: $text-secondary;
+  font-weight: 600;
+  padding: 0.25rem 0;
+}
+</style>
