@@ -1,45 +1,26 @@
 <template>
-  <div class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4" data-aos="fade-in">
-    <div class="px-6">
-      <!-- Image -->
-      <img
-        alt="employee"
-        :src="image"
-        class="shadow-lg rounded-full max-w-full mx-auto"
-        style="max-width: 120px"
-      />
-      <div class="pt-6 text-center">
-        <h5 class="text-xl font-bold">{{ name }}</h5>
-        <p class="mt-1 text-sm text-gray-500 uppercase font-semibold">
-          {{ role }}
-        </p>
-        <!-- Social Media Buttons -->
-        <div class="mt-6">
+  <div class="employee-card" data-aos="fade-in">
+    <div class="card-content">
+      <img alt="employee" :src="image" class="employee-image" />
+      <div class="employee-info">
+        <h5 class="employee-name">{{ name }}</h5>
+        <p class="employee-role">{{ role }}</p>
+        <div class="social-links">
           <button
             v-for="(socialMedia, index) in socialMedias"
             :key="index"
-            :class="[
-              socialMedia.color,
-              'text-white',
-              'w-8',
-              'h-8',
-              'rounded-full',
-              'outline-none',
-              'focus:outline-none',
-              'mr-1',
-              'mb-1',
-            ]"
-            :type="'button'"
+            :class="['social-button', socialMedia.color]"
+            type="button"
             @click="handleSocialMediaClick(socialMedia)"
           >
-            <!-- Icon -->
-            <i :class="[socialMedia.icon]"></i>
+            <i :class="socialMedia.icon"></i>
           </button>
         </div>
       </div>
     </div>
   </div>
 </template>
+
 <script>
 export default {
   name: "EmployeeCardComponent",
@@ -61,9 +42,6 @@ export default {
       required: true,
     },
   },
-  data() {
-    return {};
-  },
   methods: {
     handleSocialMediaClick(socialMedias) {
       if (socialMedias.type === "email") {
@@ -81,3 +59,78 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.employee-card {
+  width: 100%;
+  margin-bottom: 3rem;
+  padding: 0 1rem;
+
+  @include responsive(md) {
+    width: 50%;
+    margin-bottom: 0;
+  }
+
+  @include responsive(lg) {
+    width: 25%;
+  }
+}
+
+.card-content {
+  padding: 0 1.5rem;
+}
+
+.employee-image {
+  max-width: 120px;
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 9999px;
+  box-shadow: $shadow-lg;
+}
+
+.employee-info {
+  padding-top: 1.5rem;
+  text-align: center;
+}
+
+.employee-name {
+  font-size: $font-size-xl;
+  font-weight: bold;
+  color: $text-primary;
+}
+
+.employee-role {
+  margin-top: 0.25rem;
+  font-size: $font-size-base * 0.875;
+  color: $text-secondary;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.social-links {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.social-button {
+  @include flex-center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 9999px;
+  outline: none;
+  color: white;
+  transition: $transition-base;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-md;
+  }
+
+  i {
+    font-size: $font-size-base;
+  }
+}
+</style>
