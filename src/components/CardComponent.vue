@@ -1,35 +1,21 @@
 <template>
-  <div :class="[mainCss]" data-aos="fade-right" :data-aos-delay="delay">
-    <div
-      class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg"
-    >
-      <div class="px-4 py-5 flex-auto">
-        <div
-          :class="[
-            'text-white',
-            'p-3',
-            'text-center',
-            'inline-flex',
-            'items-center',
-            'justify-center',
-            'w-12',
-            'h-12',
-            'mb-5',
-            'shadow-lg',
-            'rounded-full',
-            colorCard,
-          ]"
-        >
-          <i :class="[iconType]"></i>
+  <div
+    :class="['service-card', mainCss]"
+    data-aos="fade-right"
+    :data-aos-delay="delay"
+  >
+    <div class="card-wrapper">
+      <div class="card-content">
+        <div :class="['icon-circle', colorCard]">
+          <i :class="iconType"></i>
         </div>
-        <h6 class="text-xl font-semibold">{{ title }}</h6>
-        <p class="mt-2 mb-4 text-gray-600">
-          {{ description }}
-        </p>
+        <h6 class="card-title">{{ title }}</h6>
+        <p class="card-description">{{ description }}</p>
       </div>
     </div>
   </div>
 </template>
+
 <script>
 export default {
   name: "CardComponent",
@@ -59,9 +45,63 @@ export default {
       required: true,
     },
   },
-  data() {
-    return {};
-  },
-  methods: {},
 };
 </script>
+
+<style lang="scss" scoped>
+.service-card {
+  @include responsive(md) {
+    width: calc(33.333333% - 1.5rem);
+  }
+}
+
+.card-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: white;
+  margin-bottom: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: $shadow-lg;
+  transition: $transition-base;
+
+  &:hover {
+    transform: translateY(-0.25rem);
+    box-shadow: $shadow-lg;
+  }
+}
+
+.card-content {
+  padding: 1.25rem 1rem;
+  flex: 1 1 auto;
+}
+
+.icon-circle {
+  @include flex-center;
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 1.25rem;
+  border-radius: 9999px;
+  box-shadow: $shadow-lg;
+  color: white;
+
+  i {
+    font-size: $font-size-xl;
+  }
+}
+
+.card-title {
+  font-size: $font-size-xl;
+  font-weight: 600;
+  color: $text-primary;
+  margin-bottom: 0.5rem;
+}
+
+.card-description {
+  margin: 0.5rem 0 1rem;
+  color: $text-secondary;
+  line-height: 1.5;
+}
+</style>
