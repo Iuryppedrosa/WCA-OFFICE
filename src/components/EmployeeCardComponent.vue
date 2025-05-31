@@ -22,115 +22,164 @@
 </template>
 
 <script>
-export default {
-  name: "EmployeeCardComponent",
-  props: {
-    name: {
-      type: Object,
-      required: true,
+  export default {
+    name: "EmployeeCardComponent",
+    props: {
+      name: {
+        type: Object,
+        required: true,
+      },
+      role: {
+        type: String,
+        required: true,
+      },
+      image: {
+        type: String,
+        required: true,
+      },
+      socialMedias: {
+        type: Array,
+        required: true,
+      },
     },
-    role: {
-      type: String,
-      required: true,
+    methods: {
+      handleSocialMediaClick(socialMedias) {
+        if (socialMedias.type === "email") {
+          this.sendEmail(socialMedias.email);
+        } else if (socialMedias.type === "link") {
+          this.goToLink(socialMedias.link);
+        }
+      },
+      sendEmail(email) {
+        window.location.href = `mailto:${email}`;
+      },
+      goToLink(link) {
+        window.open(link, "_blank");
+      },
     },
-    image: {
-      type: String,
-      required: true,
-    },
-    socialMedias: {
-      type: Array,
-      required: true,
-    },
-  },
-  methods: {
-    handleSocialMediaClick(socialMedias) {
-      if (socialMedias.type === "email") {
-        this.sendEmail(socialMedias.email);
-      } else if (socialMedias.type === "link") {
-        this.goToLink(socialMedias.link);
-      }
-    },
-    sendEmail(email) {
-      window.location.href = `mailto:${email}`;
-    },
-    goToLink(link) {
-      window.open(link, "_blank");
-    },
-  },
-};
+  };
 </script>
 
 <style lang="scss" scoped>
-.employee-card {
-  width: 100%;
-  margin-bottom: 3rem;
-  padding: 0 1rem;
-
-  @include responsive(md) {
+  .employee-card {
     width: 50%;
     margin-bottom: 0;
+    padding: 0 0.5rem;
+    perspective: 1000px;
+    transition: transform 0.6s;
+    height: 100%;
+    min-width: 280px;
   }
 
-  @include responsive(lg) {
-    width: 25%;
-  }
-}
+  .card-content {
+    position: relative;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 1.5rem;
+    box-shadow: 0 10px 30px rgba($primary, 0.1);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    border: 1px solid rgba($primary, 0.05);
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+    max-width: 350px;
 
-.card-content {
-  padding: 0 1.5rem;
-}
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: linear-gradient(90deg, $primary, lighten($primary, 20%));
+    }
 
-.employee-image {
-  max-width: 120px;
-  width: 100%;
-  margin: 0 auto;
-  border-radius: 9999px;
-  box-shadow: $shadow-lg;
-}
+    &:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba($primary, 0.15);
 
-.employee-info {
-  padding-top: 1.5rem;
-  text-align: center;
-}
+      .employee-image {
+        transform: scale(1.05);
+        box-shadow: 0 15px 30px rgba($primary, 0.2);
+      }
 
-.employee-name {
-  font-size: $font-size-xl;
-  font-weight: bold;
-  color: $text-primary;
-}
-
-.employee-role {
-  margin-top: 0.25rem;
-  font-size: $font-size-base * 0.875;
-  color: $text-secondary;
-  text-transform: uppercase;
-  font-weight: 600;
-}
-
-.social-links {
-  margin-top: 1.5rem;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.social-button {
-  @include flex-center;
-  width: 2rem;
-  height: 2rem;
-  border-radius: 9999px;
-  outline: none;
-  color: white;
-  transition: $transition-base;
-
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: $shadow-md;
+      .social-links {
+        transform: translateY(-5px);
+      }
+    }
   }
 
-  i {
-    font-size: $font-size-base;
+  .employee-image {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 1.5rem;
+    border-radius: 1rem;
+    box-shadow: $shadow-lg;
+    object-fit: cover;
+    transition: all 0.4s ease;
+    border: 4px solid white;
   }
-}
+
+  .employee-info {
+    padding-top: 0;
+    text-align: center;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .employee-name {
+    font-size: $font-size-xl;
+    font-weight: 800;
+    color: $text-primary;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, $text-primary 0%, $primary 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .employee-role {
+    margin-top: 0.5rem;
+    font-size: $font-size-base * 0.875;
+    color: $text-secondary;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    opacity: 0.8;
+  }
+
+  .social-links {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    transition: all 0.3s ease;
+  }
+
+  .social-button {
+    @include flex-center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 0.75rem;
+    outline: none;
+    color: white;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+
+    &:hover {
+      transform: translateY(-3px) rotate(8deg);
+      box-shadow: 0 10px 20px rgba($primary, 0.2);
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    i {
+      font-size: $font-size-base;
+    }
+  }
 </style>

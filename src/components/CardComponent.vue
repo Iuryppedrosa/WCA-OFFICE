@@ -48,9 +48,8 @@
 
 <style lang="scss" scoped>
   .service-card {
-    @include responsive(md) {
-      width: calc(33.333333% - 1.5rem);
-    }
+    width: 100%;
+    height: 100%;
   }
 
   .card-wrapper {
@@ -58,21 +57,21 @@
     display: flex;
     flex-direction: column;
     background-color: white;
-    margin-bottom: 2rem;
-    border-radius: 0.5rem;
+    border-radius: 1rem;
     overflow: hidden;
     transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     border: 1px solid rgba($text-primary, 0.08);
     height: 100%;
     background: linear-gradient(to bottom, rgba($gray-50, 0.5), white);
+    padding: 2rem;
 
     &:hover {
-      transform: translateY(-0.25rem);
+      transform: translateY(-0.5rem);
       border-color: rgba($primary, 0.2);
-      box-shadow: 0 4px 12px rgba($primary, 0.08), 0 8px 24px rgba($primary, 0.12);
+      box-shadow: 0 20px 40px rgba($primary, 0.1);
 
       .icon-wrapper {
-        transform: scale(1.08);
+        transform: scale(1.1) rotate(5deg);
       }
 
       .text-content {
@@ -82,7 +81,6 @@
   }
 
   .card-content {
-    padding: 1.75rem;
     flex: 1 1 auto;
     display: flex;
     flex-direction: column;
@@ -93,30 +91,30 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 2.75rem;
-    height: 2.75rem;
-    margin-bottom: 1.25rem;
-    border-radius: 0.375rem;
-    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    width: 3.5rem;
+    height: 3.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 1rem;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 
     i {
-      font-size: 1.125rem;
+      font-size: 1.5rem;
       color: white;
     }
 
     &.red-bg {
       background: linear-gradient(135deg, $danger, adjust-hue($danger, 15deg));
-      box-shadow: 0 4px 12px rgba($danger, 0.15);
+      box-shadow: 0 8px 16px rgba($danger, 0.15);
     }
 
     &.blue-bg {
       background: linear-gradient(135deg, $info, adjust-hue($info, 15deg));
-      box-shadow: 0 4px 12px rgba($info, 0.15);
+      box-shadow: 0 8px 16px rgba($info, 0.15);
     }
 
     &.green-bg {
       background: linear-gradient(135deg, $success, adjust-hue($success, 15deg));
-      box-shadow: 0 4px 12px rgba($success, 0.15);
+      box-shadow: 0 8px 16px rgba($success, 0.15);
     }
   }
 
@@ -125,10 +123,10 @@
   }
 
   .card-title {
-    font-size: 1.125rem;
-    font-weight: 600;
+    font-size: 1.5rem;
+    font-weight: 700;
     color: $text-primary;
-    margin-bottom: 0.625rem;
+    margin-bottom: 1rem;
     letter-spacing: -0.01em;
     background: linear-gradient(135deg, $text-primary, $text-secondary);
     -webkit-background-clip: text;
@@ -138,8 +136,8 @@
 
   .card-description {
     color: $text-secondary;
-    line-height: 1.5;
-    font-size: 0.9375rem;
+    line-height: 1.7;
+    font-size: 1.1rem;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;

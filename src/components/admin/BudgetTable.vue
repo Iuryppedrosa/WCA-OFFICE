@@ -11,25 +11,6 @@
           class="search-input"
         />
       </div>
-
-      <div class="filters">
-        <select v-model="statusFilter" class="filter-select">
-          <option value="">Todos os status</option>
-          <option value="pending">Pendente</option>
-          <option value="contacted">Contactado</option>
-          <option value="completed">Concluído</option>
-        </select>
-
-        <select v-model="sortBy" class="filter-select">
-          <option value="created_at">Data</option>
-          <option value="name">Nome</option>
-          <option value="status">Status</option>
-        </select>
-
-        <button @click="sortOrder = sortOrder === 'asc' ? 'desc' : 'asc'" class="sort-button">
-          <i :class="sortOrder === 'asc' ? 'fas fa-sort-up' : 'fas fa-sort-down'"></i>
-        </button>
-      </div>
     </div>
 
     <!-- Table -->
@@ -46,7 +27,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="budget in filteredAndSortedBudgets" :key="budget.id">
+          <tr v-for="budget in filteredBudgets" :key="budget.id">
             <td data-label="Data">
               <div class="cell-content">
                 <i class="fas fa-calendar"></i>
@@ -77,13 +58,7 @@
             <td data-label="Status">
               <div class="status-cell">
                 <span :class="['status-badge', budget.status]">
-                  {{
-                    {
-                      pending: "Pendente",
-                      contacted: "Contactado",
-                      completed: "Concluído",
-                    }[budget.status]
-                  }}
+                  {{ statusLabels[budget.status] }}
                 </span>
               </div>
             </td>
@@ -91,7 +66,7 @@
               <div class="actions-cell">
                 <select
                   v-model="budget.status"
-                  @change="updateStatus(budget)"
+                  @change="updateBudgetStatus(budget)"
                   class="status-select"
                 >
                   <option value="pending">Pendente</option>
@@ -134,45 +109,26 @@
     data() {
       return {
         searchQuery: "",
-        statusFilter: "",
-        sortBy: "created_at",
-        sortOrder: "desc",
         selectedMessage: null,
+        statusLabels: {
+          pending: "Pendente",
+          contacted: "Contactado",
+          completed: "Concluído",
+        },
       };
     },
 
     computed: {
-      filteredAndSortedBudgets() {
-        let result = [...this.budgets];
+      filteredBudgets() {
+        if (!this.searchQuery) return this.budgets;
 
-        // Aplicar filtro de busca
-        if (this.searchQuery) {
-          const query = this.searchQuery.toLowerCase();
-          result = result.filter(
-            (budget) =>
-              budget.name.toLowerCase().includes(query) ||
-              budget.email.toLowerCase().includes(query) ||
-              budget.message.toLowerCase().includes(query)
-          );
-        }
-
-        // Aplicar filtro de status
-        if (this.statusFilter) {
-          result = result.filter((budget) => budget.status === this.statusFilter);
-        }
-
-        // Aplicar ordenação
-        result.sort((a, b) => {
-          let comparison = 0;
-          if (this.sortBy === "created_at") {
-            comparison = new Date(b.created_at) - new Date(a.created_at);
-          } else {
-            comparison = String(a[this.sortBy]).localeCompare(String(b[this.sortBy]));
-          }
-          return this.sortOrder === "asc" ? comparison : -comparison;
-        });
-
-        return result;
+        const query = this.searchQuery.toLowerCase();
+        return this.budgets.filter(
+          (budget) =>
+            budget.name.toLowerCase().includes(query) ||
+            budget.email.toLowerCase().includes(query) ||
+            budget.message.toLowerCase().includes(query)
+        );
       },
     },
 
@@ -185,8 +141,16 @@
         });
       },
 
-      updateStatus(budget) {
-        this.$emit("update-status", budget);
+      async updateBudgetStatus(budget) {
+        try {
+          this.$emit("update-status", {
+            id: budget.id,
+            status: budget.status,
+          });
+        } catch (error) {
+          console.error("Erro ao atualizar status:", error);
+          // Aqui você pode adicionar uma notificação de erro se desejar
+        }
       },
     },
   };
@@ -195,30 +159,21 @@
 <style lang="scss" scoped>
   .budget-table {
     position: relative;
-    margin: 0 auto;
+    margin: 2rem auto;
     max-width: 100%;
-    overflow-x: hidden;
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   }
 
   .table-controls {
-    padding: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
+    padding: 1.5rem;
     border-bottom: 1px solid $border-color;
-    flex-wrap: wrap;
-
-    @media (max-width: $breakpoint-md) {
-      flex-direction: column;
-      align-items: stretch;
-      gap: 0.75rem;
-    }
   }
 
   .search-box {
     position: relative;
-    flex: 1;
+    max-width: 400px;
 
     i {
       position: absolute;
@@ -231,115 +186,52 @@
 
   .search-input {
     width: 100%;
-    padding: 0.625rem 1rem 0.625rem 2.5rem;
+    padding: 0.75rem 1rem 0.75rem 2.5rem;
     border: 1px solid $border-color;
-    border-radius: 0.375rem;
-    font-size: $font-size-sm;
+    border-radius: 0.5rem;
+    font-size: $font-size-base;
     transition: $transition-base;
 
     &:focus {
       outline: none;
       border-color: $primary;
-      box-shadow: 0 0 0 2px rgba($primary, 0.1);
-    }
-  }
-
-  .filters {
-    display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-
-    @media (max-width: $breakpoint-md) {
-      width: 100%;
-      justify-content: space-between;
-    }
-  }
-
-  .filter-select {
-    padding: 0.5rem 2rem 0.5rem 1rem;
-    border: 1px solid $border-color;
-    border-radius: 0.375rem;
-    font-size: $font-size-sm;
-    background-color: white;
-    cursor: pointer;
-    transition: $transition-base;
-    min-width: 120px;
-
-    @media (max-width: $breakpoint-md) {
-      flex: 1;
-      min-width: 0;
-    }
-
-    &:focus {
-      outline: none;
-      border-color: $primary;
-    }
-  }
-
-  .sort-button {
-    padding: 0.5rem;
-    border: 1px solid $border-color;
-    border-radius: 0.375rem;
-    background-color: white;
-    color: $text-secondary;
-    transition: $transition-base;
-
-    &:hover {
-      background-color: $gray-50;
-      border-color: $gray-300;
+      box-shadow: 0 0 0 3px rgba($primary, 0.1);
     }
   }
 
   .table-wrapper {
     overflow-x: auto;
+    padding: 1rem;
   }
 
   .table {
     width: 100%;
-    border-collapse: collapse;
-    font-size: $font-size-sm;
+    border-collapse: separate;
+    border-spacing: 0;
 
-    @media (max-width: $breakpoint-md) {
-      display: block;
+    th {
+      padding: 1rem;
+      text-align: left;
+      font-weight: 600;
+      color: $text-secondary;
+      border-bottom: 2px solid $border-color;
+    }
 
-      thead {
-        display: none;
-      }
+    td {
+      padding: 1rem;
+      border-bottom: 1px solid $border-color;
+      vertical-align: middle;
+    }
 
-      tbody {
-        display: block;
-      }
-
-      tr {
-        display: block;
-        padding: 1rem;
-        border-bottom: 1px solid $border-color;
-        background-color: white;
-        margin-bottom: 0.5rem;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-      }
-
-      td {
-        display: flex;
-        padding: 0.5rem 0;
-        border: none;
-        align-items: center;
-
-        &:before {
-          content: attr(data-label);
-          font-weight: 600;
-          width: 120px;
-          min-width: 120px;
-          color: $text-secondary;
-        }
-      }
+    tr:last-child td {
+      border-bottom: none;
     }
   }
 
   .cell-content {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.75rem;
 
     i {
       color: $text-muted;
@@ -350,49 +242,36 @@
   .email-link {
     color: $primary;
     text-decoration: none;
+    font-weight: 500;
 
     &:hover {
       text-decoration: underline;
     }
   }
 
-  .message-cell {
-    max-width: none;
-    width: 100%;
-
-    @media (max-width: $breakpoint-md) {
-      .message-preview {
-        width: 100%;
-        text-align: left;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-    }
-  }
-
   .message-preview {
     color: $text-primary;
     text-align: left;
+    padding: 0;
+    background: none;
+    border: none;
     cursor: pointer;
     transition: $transition-base;
+    max-width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 
     &:hover {
       color: $primary;
     }
   }
 
-  .status-cell {
-    @media (max-width: $breakpoint-md) {
-      margin: 0.5rem 0;
-    }
-  }
-
   .status-badge {
     display: inline-block;
-    padding: 0.25rem 0.75rem;
-    border-radius: 1rem;
-    font-size: $font-size-xs;
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    font-size: $font-size-sm;
     font-weight: 500;
 
     &.pending {
@@ -412,29 +291,30 @@
   }
 
   .actions-cell {
-    @media (max-width: $breakpoint-md) {
-      .status-select {
-        width: 100%;
+    .status-select {
+      padding: 0.5rem 2rem 0.5rem 1rem;
+      border: 1px solid $border-color;
+      border-radius: 0.5rem;
+      font-size: $font-size-sm;
+      background-color: white;
+      cursor: pointer;
+      transition: $transition-base;
+      width: 100%;
+      max-width: 200px;
+
+      &:focus {
+        outline: none;
+        border-color: $primary;
+        box-shadow: 0 0 0 3px rgba($primary, 0.1);
+      }
+
+      &:hover {
+        border-color: $primary;
       }
     }
   }
 
-  .status-select {
-    padding: 0.375rem 2rem 0.375rem 0.75rem;
-    border: 1px solid $border-color;
-    border-radius: 0.375rem;
-    font-size: $font-size-sm;
-    background-color: white;
-    cursor: pointer;
-    transition: $transition-base;
-
-    &:focus {
-      outline: none;
-      border-color: $primary;
-    }
-  }
-
-  // Modal
+  // Modal styles
   .modal {
     position: fixed;
     top: 0;
@@ -450,19 +330,23 @@
 
   .modal-content {
     background-color: white;
-    border-radius: 0.5rem;
+    border-radius: 1rem;
     padding: 2rem;
-    max-width: 500px;
+    max-width: 600px;
     width: 90%;
     position: relative;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
   }
 
   .modal-close {
     position: absolute;
-    top: 1rem;
-    right: 1rem;
+    top: 1.5rem;
+    right: 1.5rem;
     padding: 0.5rem;
+    background: none;
+    border: none;
     color: $text-muted;
+    cursor: pointer;
     transition: $transition-base;
 
     &:hover {
@@ -471,51 +355,58 @@
   }
 
   .modal-title {
-    font-size: $font-size-lg;
+    font-size: $font-size-xl;
     font-weight: 600;
     color: $text-primary;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
   }
 
   .modal-message {
     color: $text-secondary;
-    line-height: 1.6;
+    line-height: 1.7;
     white-space: pre-wrap;
   }
 
-  @media (max-width: $breakpoint-lg) {
-    .table-controls {
-      flex-direction: column;
-      align-items: stretch;
-    }
-
-    .message-cell {
-      max-width: 200px;
-    }
-  }
-
+  // Responsive styles
   @media (max-width: $breakpoint-md) {
     .table {
-      font-size: $font-size-xs;
+      display: block;
 
-      th,
+      thead {
+        display: none;
+      }
+
+      tbody {
+        display: block;
+      }
+
+      tr {
+        display: block;
+        padding: 1.5rem;
+        border-bottom: 1px solid $border-color;
+
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+
       td {
-        padding: 0.75rem;
+        display: flex;
+        padding: 0.75rem 0;
+        border: none;
+
+        &:before {
+          content: attr(data-label);
+          font-weight: 600;
+          width: 120px;
+          min-width: 120px;
+          color: $text-secondary;
+        }
       }
     }
 
-    .message-cell {
-      max-width: 150px;
-    }
-  }
-
-  @media (max-width: $breakpoint-sm) {
-    .table-wrapper {
-      margin: 0 -1rem;
-    }
-
-    .message-cell {
-      max-width: 100px;
+    .message-preview {
+      max-width: 100%;
     }
   }
 </style>
