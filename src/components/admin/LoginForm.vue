@@ -1,11 +1,13 @@
 <template>
   <div class="login-form">
     <div class="form-container">
-      <div class="logo-container">
-        <img src="@/assets/img/team-1-800x800.jpg" alt="WCA Office Logo" class="logo" />
+      <div class="form-header">
+        <router-link to="/" class="back-button">
+          <i class="fas fa-arrow-left"></i>
+          <span>Voltar ao site</span>
+        </router-link>
+        <h2 class="title">Área Administrativa</h2>
       </div>
-
-      <h2 class="title">Área Administrativa</h2>
 
       <form @submit.prevent="handleSubmit" class="form">
         <div class="form-group">
@@ -60,8 +62,6 @@
 </template>
 
 <script>
-  import { ref } from "vue";
-
   export default {
     name: "LoginForm",
 
@@ -78,24 +78,40 @@
 
     emits: ["submit"],
 
-    setup(props, { emit }) {
-      const form = ref({
-        email: "",
-        password: "",
-      });
-
-      const showPassword = ref(false);
-
-      const handleSubmit = () => {
-        emit("submit", { ...form.value });
-      };
-
+    data() {
       return {
-        form,
-        showPassword,
-        handleSubmit,
+        form: {
+          email: "",
+          password: "",
+        },
+        showPassword: false,
       };
     },
+
+    methods: {
+      handleSubmit() {
+        this.$emit("submit", { ...this.form });
+      },
+    },
+
+    // setup(props, { emit }) {
+    //   const form = ref({
+    //     email: "",
+    //     password: "",
+    //   });
+
+    //   const showPassword = ref(false);
+
+    //   const handleSubmit = () => {
+    //     emit("submit", { ...form.value });
+    //   };
+
+    //   return {
+    //     form,
+    //     showPassword,
+    //     handleSubmit,
+    //   };
+    // },
   };
 </script>
 
@@ -128,12 +144,39 @@
     width: auto;
   }
 
+  .form-header {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: $text-secondary;
+    font-size: $font-size-sm;
+    font-weight: 500;
+    transition: $transition-base;
+    width: fit-content;
+
+    i {
+      font-size: 1rem;
+    }
+
+    &:hover {
+      color: $primary;
+      transform: translateX(-2px);
+    }
+  }
+
   .title {
     font-size: $font-size-2xl;
     font-weight: 600;
     color: $text-primary;
     text-align: center;
-    margin-bottom: 2rem;
+    margin: 0;
   }
 
   .form {
@@ -238,6 +281,28 @@
     &:disabled {
       opacity: 0.7;
       cursor: not-allowed;
+    }
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    .login-form {
+      padding: 1rem;
+    }
+
+    .form-container {
+      padding: 1.5rem;
+    }
+
+    .title {
+      font-size: $font-size-xl;
+    }
+
+    .back-button {
+      font-size: $font-size-xs;
+
+      i {
+        font-size: 0.875rem;
+      }
     }
   }
 </style>

@@ -9,7 +9,6 @@
     "format": "prettier --write \"src/**/*.{js,ts,vue,scss}\""
   },
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.15.4",
     "@popperjs/core": "^2.11.8",
     "@supabase/supabase-js": "^2.39.0",
     "aos": "^2.3.4",
