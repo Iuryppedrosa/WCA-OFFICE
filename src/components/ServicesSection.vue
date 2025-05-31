@@ -64,7 +64,7 @@
 
 <style lang="scss" scoped>
   .services-section {
-    padding: 10rem 0;
+    padding: clamp(4rem, 8vw, 10rem) 0;
     background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%);
     margin-top: -6rem;
     position: relative;
@@ -79,18 +79,28 @@
       height: 8px;
       background: linear-gradient(90deg, $primary, lighten($primary, 20%));
     }
+
+    .container {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+
+      @include responsive(lg) {
+        padding: 0 4rem;
+      }
+    }
   }
 
   .section-header {
     text-align: center;
-    max-width: 800px;
-    margin: 0 auto 6rem;
-    padding: 0 1.5rem;
+    max-width: min(800px, 90%);
+    margin: 0 auto clamp(4rem, 6vw, 6rem);
     animation: fadeInUp 1s ease;
   }
 
   .section-title {
-    font-size: 3rem;
+    font-size: clamp(2rem, 5vw, 3rem);
     font-weight: 800;
     color: $text-primary;
     margin-bottom: 1rem;
@@ -114,7 +124,7 @@
   }
 
   .section-description {
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 2vw, 1.2rem);
     line-height: 1.8;
     color: $text-secondary;
     margin-top: 1.5rem;
@@ -125,30 +135,66 @@
 
   .cards-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2.5rem;
-    margin-bottom: 8rem;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin: 0 auto 4rem;
+    max-width: 1280px;
     padding: 0 1.5rem;
+
+    @include responsive(sm) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.5rem;
+    }
+
+    @include responsive(md) {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+      margin-bottom: 6rem;
+      padding: 0 2rem;
+    }
+
+    @include responsive(lg) {
+      gap: 4rem;
+      margin-bottom: 8rem;
+      padding: 0 4rem;
+    }
   }
 
   .content-wrapper {
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 5rem;
+    flex-direction: column;
+    gap: 3rem;
     padding: 2rem;
     background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(10px);
     border-radius: 1rem;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+    margin: 0 1.5rem;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+
+    @include responsive(md) {
+      flex-direction: row;
+      align-items: center;
+      gap: 4rem;
+      padding: 3rem;
+      margin: 0 2rem;
+    }
+
+    @include responsive(lg) {
+      gap: 6rem;
+      padding: 4rem;
+      margin: 0 4rem;
+    }
   }
 
   .info-content {
     width: 100%;
-    padding: 0 1.5rem;
 
     @include responsive(md) {
-      width: calc(50% - 2.5rem);
+      width: 40%;
+      flex-shrink: 0;
     }
   }
 
@@ -157,19 +203,28 @@
   }
 
   .info-title {
-    font-size: 2.5rem;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
     font-weight: 800;
     color: $text-primary;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     letter-spacing: -0.02em;
     line-height: 1.2;
+
+    @include responsive(lg) {
+      font-size: 2.5rem;
+    }
   }
 
   .info-description {
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
     line-height: 1.8;
     color: $text-secondary;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
+
+    @include responsive(lg) {
+      font-size: 1.2rem;
+      margin-bottom: 2.5rem;
+    }
   }
 
   .contact-link {
@@ -182,13 +237,10 @@
     background: rgba($primary, 0.1);
     border-radius: 3rem;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    width: fit-content;
 
-    span {
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    i {
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    @include responsive(lg) {
+      padding: 1.2rem 2.5rem;
     }
 
     &:hover {
@@ -205,10 +257,10 @@
 
   .image-content {
     width: 100%;
-    padding: 0 1.5rem;
 
     @include responsive(md) {
-      width: calc(50% - 2.5rem);
+      width: 60%;
+      flex-shrink: 0;
     }
   }
 
@@ -219,6 +271,11 @@
     box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
     transform: perspective(1000px) rotateY(0deg);
     transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    aspect-ratio: 16/9;
+
+    @include responsive(lg) {
+      aspect-ratio: 4/3;
+    }
 
     &:hover {
       transform: perspective(1000px) rotateY(3deg);
@@ -237,7 +294,8 @@
 
   .card-image {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
     display: block;
     transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   }
@@ -248,14 +306,18 @@
     left: 0;
     right: 0;
     background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.2));
-    padding: 3rem;
+    padding: 2rem;
     opacity: 0;
     transform: translateY(2rem);
     transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+
+    @include responsive(lg) {
+      padding: 3rem;
+    }
   }
 
   .overlay-title {
-    font-size: 1.8rem;
+    font-size: clamp(1.3rem, 2vw, 1.8rem);
     font-weight: 700;
     color: white;
     margin-bottom: 1rem;
@@ -263,7 +325,7 @@
   }
 
   .overlay-description {
-    font-size: 1.1rem;
+    font-size: clamp(0.9rem, 1.2vw, 1.1rem);
     line-height: 1.7;
     color: rgba(255, 255, 255, 0.95);
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
