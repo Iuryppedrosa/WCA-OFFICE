@@ -36,28 +36,51 @@
         cards: [
           {
             mainCss: "lg:pt-12 pt-6 w-full md:w-4/12 px-4 text-center",
-            title: "Garantia",
-            description: "Oferecemos vários produtos com garantia.... explicar mais",
+            title: "Qualidade Garantida",
+            description:
+              "Produtos de alta durabilidade com garantia estendida. Nosso compromisso é com a excelência e satisfação dos nossos clientes.",
             delay: 1200,
-            colorCard: "bg-red-400",
+            colorCard: "red-bg",
             iconType: "fas fa-award",
+            benefits: [
+              "Garantia estendida de até 6 anos em produtos selecionados",
+              "Materiais premium com certificação de qualidade",
+              "Testes rigorosos de durabilidade e resistência",
+              "Assistência técnica especializada em todo Brasil",
+              "Peças de reposição originais garantidas",
+            ],
           },
           {
             mainCss: "w-full md:w-4/12 px-4 text-center",
-            title: "Suporte ao Cliente",
-            description: "Oferecemos suporte ao cliente 24 horas por dia, 7 dias por semana.",
+            title: "Atendimento Premium",
+            description:
+              "Equipe especializada disponível para auxiliar em todas as etapas, desde o projeto até a instalação do seu mobiliário.",
             delay: 1400,
-            colorCard: "bg-blue-400",
-            iconType: "fas fa-retweet",
+            colorCard: "blue-bg",
+            iconType: "fas fa-headset",
+            benefits: [
+              "Consultoria personalizada para seu projeto",
+              "Acompanhamento dedicado em todas as etapas",
+              "Equipe técnica altamente qualificada",
+              "Suporte pós-venda especializado",
+              "Prazo de entrega diferenciado",
+            ],
           },
           {
             mainCss: "pt-6 w-full md:w-4/12 px-4 text-center",
-            title: "Empresa de renome",
+            title: "Experiência Comprovada",
             description:
-              "Estamos no mercado há mais de 10 anos, com mais de 1000 clientes satisfeitos.",
+              "Mais de uma década transformando ambientes corporativos com soluções inovadoras e personalizadas.",
             delay: 1600,
-            colorCard: "bg-green-400",
-            iconType: "fas fa-fingerprint",
+            colorCard: "green-bg",
+            iconType: "fas fa-chart-line",
+            benefits: [
+              "Mais de 1000 projetos executados com sucesso",
+              "Portfólio diversificado de soluções",
+              "Parceria com as principais marcas do mercado",
+              "Equipe com vasta experiência no segmento",
+              "Reconhecimento e credibilidade no mercado",
+            ],
           },
         ],
         employees: [

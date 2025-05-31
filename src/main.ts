@@ -3,7 +3,6 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 // styles
-import "@fortawesome/fontawesome-free/css/all.min.css";
 import "@/assets/scss/main.scss";
 
 // mounting point for the whole app
