@@ -62,13 +62,18 @@
 
 <style lang="scss" scoped>
   .employee-card {
-    width: 50%;
+    width: 100%;
     margin-bottom: 0;
     padding: 0 0.5rem;
     perspective: 1000px;
     transition: transform 0.6s;
     height: 100%;
-    min-width: 280px;
+    max-width: 350px;
+
+    @include responsive(lg) {
+      width: calc(50% - 1.5rem);
+      max-width: 450px;
+    }
   }
 
   .card-content {
@@ -87,7 +92,6 @@
     align-items: center;
     width: 100%;
     margin: 0 auto;
-    max-width: 350px;
 
     &::before {
       content: "";

@@ -106,8 +106,8 @@
 
   .team-grid {
     display: flex;
-    flex-wrap: nowrap;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     gap: 2rem;
     width: 100%;
     max-width: 1200px;
@@ -115,6 +115,8 @@
     padding: 0 1rem;
 
     @include responsive(lg) {
+      flex-direction: row;
+      justify-content: center;
       gap: 3rem;
     }
   }
