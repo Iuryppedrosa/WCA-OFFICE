@@ -37,50 +37,26 @@
           {
             mainCss: "lg:pt-12 pt-6 w-full md:w-4/12 px-4 text-center",
             title: "Qualidade Garantida",
-            description:
-              "Produtos de alta durabilidade com garantia estendida. Nosso compromisso é com a excelência e satisfação dos nossos clientes.",
+            description: "Produtos de alta durabilidade",
             delay: 1200,
             colorCard: "red-bg",
             iconType: "fas fa-award",
-            benefits: [
-              "Garantia estendida de até 6 anos em produtos selecionados",
-              "Materiais premium com certificação de qualidade",
-              "Testes rigorosos de durabilidade e resistência",
-              "Assistência técnica especializada em todo Brasil",
-              "Peças de reposição originais garantidas",
-            ],
           },
           {
             mainCss: "w-full md:w-4/12 px-4 text-center",
             title: "Atendimento Premium",
-            description:
-              "Equipe especializada disponível para auxiliar em todas as etapas, desde o projeto até a instalação do seu mobiliário.",
+            description: "Equipe especializada para te auxiliar em todas as etapas.",
             delay: 1400,
             colorCard: "blue-bg",
             iconType: "fas fa-headset",
-            benefits: [
-              "Consultoria personalizada para seu projeto",
-              "Acompanhamento dedicado em todas as etapas",
-              "Equipe técnica altamente qualificada",
-              "Suporte pós-venda especializado",
-              "Prazo de entrega diferenciado",
-            ],
           },
           {
             mainCss: "pt-6 w-full md:w-4/12 px-4 text-center",
             title: "Experiência Comprovada",
-            description:
-              "Mais de uma década transformando ambientes corporativos com soluções inovadoras e personalizadas.",
+            description: "20 anos transformando ambientes corporativos.",
             delay: 1600,
             colorCard: "green-bg",
             iconType: "fas fa-chart-line",
-            benefits: [
-              "Mais de 1000 projetos executados com sucesso",
-              "Portfólio diversificado de soluções",
-              "Parceria com as principais marcas do mercado",
-              "Equipe com vasta experiência no segmento",
-              "Reconhecimento e credibilidade no mercado",
-            ],
           },
         ],
         employees: [
@@ -111,7 +87,7 @@
           },
           {
             name: "Marli Castro Rezende",
-            role: "CEO",
+            role: "CEO, Financeiro, Compras e Controle",
             image: require("@/assets/img/employees/Marli (2).png"),
             socialMedias: [
               {
